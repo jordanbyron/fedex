@@ -174,8 +174,8 @@ module Fedex
             end
             if package[:customer_refrences]
               xml.CustomerReferences{
-              package[:customer_refrences].each do |type, value|
-                 xml.CustomerReferenceType type
+              package[:customer_refrences].each do |value|
+                 xml.CustomerReferenceType 'CUSTOMER_REFERENCE'
                  xml.Value                 value
               end
               }
