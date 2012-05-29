@@ -172,8 +172,13 @@ module Fedex
                 xml.Units package[:dimensions][:units]
               }
             end
-            (package[:customer_refrences] || []).each do |reference|
-              xml.CustomerReferences reference
+            if package[:customer_refrences]
+              xml.CustomerReferences{
+              package[:customer_refrences].each do |type, value|
+                 xml.CustomerReferenceType type
+                 xml.Value                 value
+              end
+              }
             end
           }
         end
