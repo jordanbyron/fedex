@@ -2,10 +2,10 @@ require 'spec_helper'
 
 module Fedex
   describe Address do
-    describe "ship service for label" do
+    describe "validation" do
       let(:fedex) { Shipment.new(fedex_credentials) }
 
-      context "valid address", :vcr do
+      context "with a valid address", :vcr do
         let(:address) do
           {
             :street      => "5 Elm Street",
