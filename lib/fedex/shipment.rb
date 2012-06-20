@@ -2,6 +2,7 @@ require 'fedex/credentials'
 require 'fedex/request/label'
 require 'fedex/request/rate'
 require 'fedex/request/address'
+require 'fedex/request/tracking_information'
 
 module Fedex
   class Shipment
@@ -36,8 +37,15 @@ module Fedex
       Request::Rate.new(@credentials, options).process_request
     end
 
+    # @param [Hash] address, A hash with the address information to be validated
     def validate_address(options = {})
       Request::Address.new(@credentials, options).process_request
+    end
+
+    # @param [Hash] package_id, A string with the requested tracking number
+    # @param [Hash] package_type, A string identifitying the type of tracking number used. Full list Fedex::Track::PACKAGE_IDENTIFIER_TYPES
+    def track(options = {})
+      Request::TrackingInformation.new(@credentials, options).process_request
     end
 
   end
