@@ -244,8 +244,6 @@ module Fedex
           "Override service in subclass: {:id => 'service', :version => 1}"
       end
 
-      def
-
       # Use GROUND_HOME_DELIVERY for shipments going to a residential address within the US.
       def service_type
         if @recipient[:residential].to_s =~ /true/i and @service_type =~ /GROUND/i and @recipient[:country_code] =~ /US/i
