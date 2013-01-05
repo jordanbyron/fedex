@@ -15,7 +15,7 @@ module Fedex
         @credentials  = credentials
 
         # Optional
-        @include_detailed_scans = options[:include_detailed_scans]
+        @include_detailed_scans = options[:include_detailed_scans] || false
         @uuid                   = options[:uuid]
         @paging_token           = options[:paging_token]
 

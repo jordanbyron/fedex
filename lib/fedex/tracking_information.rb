@@ -40,8 +40,8 @@ module Fedex
       @service_type    = details[:service_type]
       @status          = details[:status_description]
       @delivery_at     = Time.parse(details[:actual_delivery_timestamp])
-
-      @events = details[:events].map do |event_details|
+      
+      @events = [details[:events]].flatten.map do |event_details|
         Event.new(event_details)
       end
     end

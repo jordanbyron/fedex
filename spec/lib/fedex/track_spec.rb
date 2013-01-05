@@ -27,16 +27,9 @@ module Fedex
       end
 
       it "allows short hand tracking number queries" do
-        shorthand_options = options
+        tracking_info = fedex.track(:tracking_number => options[:package_id])
 
-        shorthand_options.delete(:package_type)
-        tracking_number = shorthand_options.delete(:package_id)
-
-        shorthand_options[:tracking_number] = tracking_number
-
-        tracking_info = fedex.track(shorthand_options)
-
-        tracking_info.tracking_number.should == tracking_number
+        tracking_info.tracking_number.should == options[:package_id]
       end
 
       it "reports the status of the package" do
